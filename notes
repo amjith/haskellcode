@@ -1,0 +1,45 @@
+Types and Typeclasses:
+Int, Float, Double, Integer are Types. 
+
+Typeclasses:
+Num, Integral, Floating, RealFloat, Eq, Ord, etc are Typeclasses.
+Type classes can be used in defining function definitions
+eg: 
+  chk :: (Num a) => a -> String
+  chk a =  if a == 0 then "Equal" else "Not Equal"
+
+Use :info in the ghci prompt to get a quick list of it's sub-classes or super-classes. 
+eg:
+*Main> :info Num
+class (Eq a, Show a) => Num a where
+  (+) :: a -> a -> a
+  (*) :: a -> a -> a
+  (-) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+        -- Defined in GHC.Num
+instance Num Int -- Defined in GHC.Num
+instance Num Integer -- Defined in GHC.Num
+instance Num Double -- Defined in GHC.Float
+instance Num Float -- Defined in GHC.Float
+
+
+
+Num is a Typeclass. Represents Int, Integer, Float, Double.
+	- It can check the equality (==) but it can't check the ordering (<, >, <=, >=).
+	- It can also do (+ - * /) etc.
+	- If we want to have both +-*/ and compare the numbers,then use this
+	  eg:
+		 chk :: (Num a, Ord a) => a-> String
+
+Variable names MUST start a lower-case.
+Type names MUST start with an Upper-case
+
+Difference between takeWhile and filter. 
+filter (<3) (map (/3) [1..]) - This is an infinite list
+takeWhile (<3) (map (/3) [1..]) - This is a finite list
+
+'filter' won't work on infinite list. Use 'takewhile'.
+
